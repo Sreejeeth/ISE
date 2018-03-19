@@ -1,0 +1,280 @@
+
+<!DOCTYPE html>
+{% load staticfiles %}
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{% block title %}prosthetics.com{% endblock %}</title>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="{% static "css/base.css" % }"/>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+  </head>
+
+
+<body>
+  <style>
+
+  #button {
+    background: #000;
+    border-radius: 50%;
+    cursor: pointer;
+    height: 100px;
+    width: 100px;
+    position: absolute;
+    top: calc(50% - 50px);
+  }
+  #button div {
+    background: #FFFFFF;
+    height: 4px;
+    width: 40px;
+    position: absolute;
+    left: 11px;
+    top: 48px;
+    transition: all .3s ease-in-out;
+    transform-origin: 38px 2px;
+  }
+
+  .close-back {
+    left: calc(50% - 110px);
+  }
+  .close-back .b1 {
+    transform: translateX(0) rotate(45deg);
+  }
+  .close-back .b2 {
+    transform: translateX(0) rotate(135deg);
+  }
+  .close-back .b3 {
+    transform: translateX(0) rotate(225deg);
+  }
+  .close-back .b4 {
+    transform: translateX(0) rotate(315deg);
+  }
+  .close-back:hover .b1 {
+    transform: translateX(-21px) rotate(135deg);
+  }
+  .close-back:hover .b2 {
+    transform: translateX(-20px) rotate(180deg);
+  }
+  .close-back:hover .b3 {
+    transform: translateX(-20px) rotate(180deg);
+  }
+  .close-back:hover .b4 {
+    transform: translateX(-21px) rotate(225deg);
+  }
+
+  .next-back {
+    left: calc(50% + 10px);
+  }
+  .next-back .b1 {
+    transform: translateX(18px) rotate(0deg);
+  }
+  .next-back .b2 {
+    transform: translateX(20px) rotate(45deg);
+  }
+  .next-back .b3 {
+    transform: translateX(20px) rotate(315deg);
+  }
+  .next-back .b4 {
+    transform: translateX(18px) rotate(360deg);
+  }
+  .next-back:hover .b1 {
+    transform: translateX(-21px) rotate(135deg);
+  }
+  .next-back:hover .b2 {
+    transform: translateX(-20px) rotate(180deg);
+  }
+  .next-back:hover .b3 {
+    transform: translateX(-20px) rotate(180deg);
+  }
+  .next-back:hover .b4 {
+    transform: translateX(-21px) rotate(225deg);
+  }
+
+  /* DEMO ONLY */
+  h4 {
+    font-weight: 200;
+    font-size: 13px;
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+    margin: 0;
+    font-family: sans-serif;
+    color: #000000;
+    text-transform: uppercase;
+  }
+  </style>
+<div id="container">
+
+</div>
+<style>
+body {
+    background-color: #000000;
+    height: 600px;
+}
+
+#container {
+    width: 100%;
+    height: 100%;
+    margin: auto;
+    position: relative;
+    overflow: hidden;
+}
+
+.ball {
+    //background-color: pink;
+    color: #d3d3d3;
+    border-radius: 50%;
+    position: absolute;
+   align-items: center;
+    font-family: new times roman, serif;
+}
+.cover {
+    position: absolute;
+    background-color: rgb(233,65,103);
+    border-radius: 50%;
+}</style>
+<script>
+window.onload = function() {
+    var container = document.getElementById("container");
+
+    var cW = container.offsetWidth;
+    var cH = container.offsetHeight;
+    var gravity = 2.65;
+    var lifespan1 = 200;
+    var lifespan2 = 150;
+    var ground = .3 * cH;
+    var startX;
+    var r = 38;
+    var speedX;
+    var speedYDown = 13;
+    var speedYUp = 15;
+    var fontSize = 92;
+    if (cW > 500) {
+        startX = 0.16 * cW;
+        speedX = 0.005 * cW;
+    } else {
+        startX = 0.15 * cW;
+        speedX = 0.007 * cW;
+    }
+
+
+    // Ball object
+    var Ball = function(sLetter, index) {
+        this.sLetter = sLetter;
+        this.node;
+        this.x = startX;
+        this.y = ground - 50;
+        this.index = index;
+        this.r = r;
+        this.jumpN = 0;
+        this.speedY = speedYDown;
+        this.speedX = speedX;
+        this.opa = 1;
+        this.create();
+    }
+
+    Ball.prototype = {
+        create: function() {
+            this.node = document.createElement("div");
+            this.node.className = "ball";
+            this.node.style.width = this.r + "px";
+            this.node.style.height = this.r + "px";
+            this.node.style.left = this.x + "px";
+            this.node.style.top = this.y + "px";
+            this.node.innerHTML = this.sLetter;
+            container.appendChild(this.node);
+            this.node.style.fontSize = fontSize + "px";
+        },
+        move: function() {
+            this.y += this.speedY;
+            this.x += this.speedX;
+
+        },
+        display: function() {
+            //this.node.style.transform = "translate("+ this.x + "px," + this.y + "px)";
+            //this.node.style.top = this.y + "px";
+            //this.node.style.left = this.x + "px";
+          this.node.style.top = this.y / cH * 100 + "%";
+            this.node.style.left = this.x / cW * 100 + "%";
+        }
+    }
+
+
+    // TextBall object
+    var TextBalls = function(sText) {
+        this.sText = sText + " ";
+        this.n = sText.length + 1;
+        this.balls = [];
+        this.timeIntv = null;
+        this.life = 0;
+        this.createBalls();
+
+    }
+    TextBalls.prototype = {
+        createBalls: function() {
+            for (var i = 0; i < this.n; i++) {
+                var ball = new Ball(this.sText[i], i);
+                this.balls.push(ball);
+            }
+            this.balls[this.n-1].node.className = "cover";
+            this.balls[this.n-1].xTarget = cW;
+        },
+
+        move: function() {
+            var thisObj = this;
+            this.timeIntv = setInterval(function(){
+                thisObj.life++;
+                if (thisObj.life < lifespan2) {
+                    for (var i = 0; i < thisObj.n; i++) {
+                        var ball = thisObj.balls[i];
+                        if (ball.y < ground) {
+                            ball.speedY += gravity;
+                        } else {
+                            ball.y = ground;
+                            if (ball.jumpN < i || i == thisObj.n - 1) {
+                                ball.jumpN++;
+                                ball.speedY = - speedYUp;
+                            } else {
+                                ball.speedY = 0;
+                                ball.speedX = 0;
+                            }
+                        }
+
+                        ball.move();
+                        ball.display();
+                    }
+                    if (thisObj.life > lifespan1) {
+                        var coverB1 = thisObj.balls[thisObj.n-1];
+                        coverB1.opa = coverB1.opa > 0? coverB1.opa-0.025 : 0;
+                        coverB1.node.style.opacity = coverB1.opa;
+                    }
+                }  else {clearInterval(thisObj.timeIntv);}
+
+            }, 50);
+        }
+    }
+
+    var tb = new TextBalls("PROSTHETICS \n");
+
+    tb.move();
+
+
+}</script>
+
+
+<p class="text-right">
+    <a href="{% url "home" %}">
+  <div class='next-back' id='button'>
+    <div class='b1'></div>
+    <div class='b2'></div>
+    <div class='b3'></div>
+    <div class='b4'></div>
+  </div>
+</a>
+</body>
+</html>

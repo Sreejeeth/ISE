@@ -1,0 +1,83 @@
+{% extends 'base.html' %}
+
+{% block content %}
+{% load staticfiles %}
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/cart.css' %}">
+<style>
+body  {
+
+    background-color: #ffffff;
+}
+</style>
+<div class="jumbotron " style= "text-align :center ;background-color:#4d4d4d ; color: white">
+  <h1>Thanks for shopping with us!</h1>
+</div>
+<br>
+<br>
+
+<script>
+	function fun(){
+	alert("Thanks for visiting us!");
+}
+</script>
+</div>
+<!--
+<div align="left">
+	<button type="submit",onClick="email()">Send mail</button>
+<script>
+function email(){
+
+emailjs.send("gmail","template_jpKYdkOi",{name: "James", notes: "Check this out!"});</script>
+	</div>-->
+
+<div class="container" >
+
+
+  <form id="myform" method="post">
+  <label >Reply To</label>
+  <input type="text" name="reply_to" />
+  <label>Name</label>
+  <input type="text" name="from_name" />
+  <br><br>
+<button   class =" btn btn-primary" style="color:black">
+  Submit
+  </button>
+  <br><br>
+  {%csrf_token%}
+  </form>
+<div align="center">
+<p><li>Kindly enter your email ID and name!</li>
+<li>copyrights 2017 prosthetics.com</li></p>
+</div>
+</div>
+  <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+
+  <script type="text/javascript" src="https://cdn.emailjs.com/dist/email.min.js"></script>
+  <script type="text/javascript">
+     (function(){
+        emailjs.init("user_m15yObX8RyeUjhFF7qZkY");
+     })();
+  </script>
+  <script>
+  var myform = $("form#myform");
+  myform.submit(function(event){
+  	event.preventDefault();
+
+    // Change to your service ID, or keep using the default service
+    var service_id = "default_service";
+    var template_id = "template_jpKYdkOi";
+
+    myform.find("button").text("Sending...");
+    emailjs.sendForm(service_id,template_id,"myform")
+    	.then(function(){
+      	alert("Details are emailed!\nThanks for visiting us!");
+         myform.find("button").text("Send");
+      }, function(err) {
+         alert("Send email failed!\r\n Response:\n " + JSON.stringify(err));
+         myform.find("button").text("Send");
+      });
+    return false;
+  });</script>
+</div>
+{% endblock %}
