@@ -7,14 +7,26 @@
 
 {% block content %}
 <style>
+/* html {
+  background: url(images/mvit.jpg) no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+} */
+body
+{
+    /* background-image: url("http://www.irbsearch.com/img/slides/bg-most-data.jpg"); */
+    /* background-image: url("https://i.pinimg.com/originals/0e/86/98/0e86989645e59fd230f5f9f7bcf7eaff.jpg"); */
+    background-repeat:no-repeat;
 
-body{
-  background-image: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRvhgOPVvr4O8DeKgRBPNFSZJfyMY2Gam4GZn-n3Yay7cGM1lMXX")
+    background-size:150%;
 }
 img {
 
     border-radius: 10%;
 }
+em {      font-size: 200%;     }
 </style>
 <script>
 function bigImg(x) {
@@ -28,14 +40,14 @@ function normalImg(x) {
 }
 </script>
 
-</style>
+
 
 
     <div class ="container">
-      <div class ="jumbotron" style= "text-align :center ; margin :0 auto;background-color:#4d4d4d ; color: white">
 
 
-        <h1>{% if category %}{{ category.name }}{% else %}ALL STUDENTS{% endif %}</h1>
+
+        <h1><em>{% if category %}{{ category.name }}{% else %}ALL STUDENTS{% endif %}</em></h1>
         </div>
         <br>
         <br>
@@ -46,7 +58,7 @@ function normalImg(x) {
 
 
 
-                    <img src="{% if product.image %}{{ product.image.url }}{% else %}{% static "img/no_image.png" %}{% endif %}" onmouseover="bigImg(this)" onmouseout="normalImg(this)" border="0" height="250px" width="250px"class="w3-cirle">
+                    <img src="{% if product.image %}{{ product.image.url }}{% else %}{% static "images/no_image.png" %}{% endif %}" onmouseover="bigImg(this)" onmouseout="normalImg(this)" border="0" height="250px" width="250px"class="w3-cirle">
 
 
               </div>
@@ -54,16 +66,56 @@ function normalImg(x) {
 
 
               <div class="col-xs-8">
+                <table class="table">
 
                 <h1>{{ product.name }}</h1><br>
+                <tbody>
+                     <tr>
+                       <td>Address</td>
+                       <td></td>
+                       <td>:{{ product.address }}</td>
+                     </tr>
+                     <tr>
+                       <td>USN</td>
+                       <td></td>
+                       <td>:{{ product.USN }}</td>
+                     </tr>
+                     <tr>
+                       <td>First Semester</td>
+                       <td></td>
+                       <td>:{{ product.first }}</td>
+                     </tr>
+                     <tr>
+                       <td>Second Semester</td>
+                       <td></td>
+                       <td>:{{ product.second }}</td>
+                     </tr>
+                     <tr>
+                       <td>Third Semester</td>
+                       <td></td>
+                       <td>:{{ product.third }}</td>
+                     </tr>
+                     <tr>
+                       <td>Fourth Semester</td>
+                       <td></td>
+                       <td>:{{ product.fourth }}</td>
+                     </tr>
+                     <tr>
+                       <td>Fifth Semester</td>
+                       <td></td>
+                       <td>:{{ product.fifth }}</td>
+                     </tr>
+                     
+                   </tbody>
+</table>
 
-              <pre>Address           :{{ product.address }}<br></pre>
-              <pre>USN               :{{ product.USN }}<br></pre>
-              <pre>First Semester    :{{ product.first }}<br></pre>
-              <pre>Second Semester   :{{ product.second }}<br></pre>
-              <pre>Third Semester    :{{ product.third }}<br></pre>
-              <pre>Fourth Semester   :{{ product.fourth }}<br></pre>
-              <pre>Fifth Semester    :{{ product.fifth }}<br></pre>
+              <!-- Address           :{{ product.address }}<br>
+              USN               :{{ product.USN }}<br>
+              First Semester    :{{ product.first }}<br>
+              Second Semester   :{{ product.second }}<br>
+              Third Semester    :{{ product.third }}<br>
+              Fourth Semester   :{{ product.fourth }}<br>
+              Fifth Semester    :{{ product.fifth }}<br> -->
 
 
                 <br>

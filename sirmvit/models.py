@@ -27,12 +27,13 @@ class Category(models.Model):
 class Studentdbs(models.Model):
 
     category = models.ForeignKey(Category, related_name='products')
+    USN = models.CharField(max_length=11,blank=True)
     name = models.CharField(max_length=200, db_index=True)
     slug = models.SlugField(max_length=200, db_index=True)
     address = models.CharField(max_length=200, db_index=True)
     image = ResizedImageField(size=[300, 300], upload_to='products/%Y/%m/%d', blank=True)
     # image = models.ImageField(upload_to='products/%Y/%m/%d', blank=True)
-    USN = models.CharField(max_length=11,blank=True)
+
     first = models.DecimalField(max_digits=10, decimal_places=2)
     second = models.DecimalField(max_digits=10, decimal_places=2)
     third = models.DecimalField(max_digits=10, decimal_places=2)
@@ -44,11 +45,11 @@ class Studentdbs(models.Model):
     updated = models.DateTimeField(auto_now=True)
 
     class Meta:
-        ordering = ('name',)
+        ordering = ('USN',)
         index_together = (('id', 'slug'),)
 
     def __str__(self):
         return self.name
-    # 
+    #
     # def get_absolute_url(self):
     #     return reverse('product_detail', args=[self.id, self.slug])

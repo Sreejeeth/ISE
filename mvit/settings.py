@@ -31,7 +31,7 @@ ADMIN_SITE_HEADER = "Student database management"
 # Application definition
 
 INSTALLED_APPS = [
-    
+
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -121,8 +121,15 @@ USE_TZ = True
 
 ALLOWED_HOSTS = ['localhost', '127.0.0.1']
 STATIC_URL = '/static/'
-STATIC_ROOT=os.path.join(BASE_DIR,"static")
-STATICFILES_DIRS =os.path.join(os.path.dirname(__file__),"static"),
+# STATIC_ROOT=os.path.join(BASE_DIR,"static")
+# STATICFILES_DIRS =os.path.join(os.path.dirname(__file__),"static"),
+
+STATIC_DIR = os.path.join(BASE_DIR,"static")
+
+STATICFILES_DIRS = [
+    STATIC_DIR,
+]
+
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')

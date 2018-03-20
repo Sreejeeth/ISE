@@ -10,7 +10,7 @@ class YearAdmin(admin.ModelAdmin):
 admin.site.register(Category, YearAdmin)
 
 class MarksAdmin(admin.ModelAdmin):
-    list_display = ['name', 'slug','image','first','second','third','fourth','fifth','address', 'available', 'created', 'updated']
+    list_display = ['USN','name', 'slug','image','first','second','third','fourth','fifth','address', 'available', 'created', 'updated']
     list_filter = ['available','image', 'created', 'updated',]
     list_editable = ['first','second','third','fourth','fifth', 'available']
     prepopulated_fields = {'slug': ('name',)}

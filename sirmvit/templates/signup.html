@@ -3,8 +3,10 @@
 {% block content %}
 <style>
 body  {
-    background-image: url("https://goo.gl/VHzU3u");
-    background-color: #ffffff;
+  background-image: url("http://www.reuun.com/data/out/139/403696063-website-wallpapers.png");
+  background-repeat:no-repeat;
+
+background-size:150%;
 }
 video {
     position: fixed;
@@ -16,7 +18,7 @@ video {
     height: auto;
     z-index: -100;
     transform: translateX(-50%) translateY(-50%);
- background: url('https://goo.gl/VHzU3u') no-repeat;
+ background: url('https://img.collegepravesh.com/2017/02/Sir-MVIT-Logo.jpg') no-repeat;
   background-size: cover;
   transition: 1s opacity;
 }
@@ -29,9 +31,7 @@ video {
       <p>
         {{ field.label_tag }}<br>
         {{ field }}
-        {% if field.help_text %}
-          <small style="color: grey">{{ field.help_text }}</small>
-        {% endif %}
+
         {% for error in field.errors %}
           <p style="color: red">{{ error }}</p>
         {% endfor %}

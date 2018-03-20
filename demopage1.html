@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block title %}
+    {% if category %}{{ category.name }}{% else %}Products{% endif %}
+{% endblock %}
+
+{% block content %}
+<style >
+
+body
+{
+  background-image: url("http://www.irbsearch.com/img/slides/bg-most-data.jpg");
+/* background-image: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQvePvsXBJLewrISmhxEq1yTulz28MgOxDOnE8Aj5vI8Rb0vKFF4Q"); */
+background-repeat:no-repeat;
+/* background-position: bottom; */
+
+background-size:155%;
+}
+</style>
+<style>
+
+.button5 {
+    background-color: white;
+    color: black;
+    border: 2px solid #555555;
+}
+
+.button5:hover {
+    background-color: black;
+    color: white;
+}
+
+</style>
+
+
+
+        <h1>Categories</h1>
+
+       <div class="container" style= "text-align :center ; margin :0 auto">
+        <ul>
+            <h1  {% if not category %}class="selected"{% endif %}>
+                <a class="navbar-link" href="{% url "product_list" %}"><button type="button" class="button button5 btn btn-primary " style="height:50px;width:500px">All</button></a>
+            </h1>
+        {% for c in categories %}
+            <h1 {% if category.slug == c.slug %}class="selected"{% endif %}>
+                <a href="{{ c.get_absolute_url }}"><button type="button" class="button button5 btn btn-primary " style="height:50px;width:500px">{{c.name}}</button></a>
+            </h1>
+        {% endfor %}
+        </ul>
+</div>
+{% endblock %}
