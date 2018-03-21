@@ -7,20 +7,15 @@
 
 {% block content %}
 <style>
-/* html {
-  background: url(images/mvit.jpg) no-repeat center center fixed;
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover;
-} */
+
 body
 {
     /* background-image: url("http://www.irbsearch.com/img/slides/bg-most-data.jpg"); */
-    /* background-image: url("https://i.pinimg.com/originals/0e/86/98/0e86989645e59fd230f5f9f7bcf7eaff.jpg"); */
-    background-repeat:no-repeat;
+    /* background-image: url("http://chesterspirit.com/wp-content/uploads/2016/02/Plain-Grey-Background.jpg"); */
+    /* background-repeat:no-repeat; */
+        background-image: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR6XyhnrZLn9aOLJg7WwIOw_yF5KUdyTWb0x1k2lIindhD4zoTQCg");
 
-    background-size:150%;
+    background-size:120%;
 }
 img {
 
@@ -47,7 +42,7 @@ function normalImg(x) {
 
 
 
-        <h1><em>{% if category %}{{ category.name }}{% else %}ALL STUDENTS{% endif %}</em></h1>
+        <h1 style="color:#ffffff"><em>{% if category %}{{ category.name }}{% else %}ALL STUDENTS{% endif %}</em></h1>
         </div>
         <br>
         <br>
@@ -66,9 +61,9 @@ function normalImg(x) {
 
 
               <div class="col-xs-8">
-                <table class="table">
+                <table class="table" style="color:#ffffff">
 
-                <h1>{{ product.name }}</h1><br>
+                <h1 style="color:#ffffff">{{ product.name }}</h1><br>
                 <tbody>
                      <tr>
                        <td>Address</td>
@@ -105,7 +100,7 @@ function normalImg(x) {
                        <td></td>
                        <td>:{{ product.fifth }}</td>
                      </tr>
-                     
+
                    </tbody>
 </table>
 
