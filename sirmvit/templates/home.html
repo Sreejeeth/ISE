@@ -7,16 +7,11 @@
     <title>{% block title %}ISE.com{% endblock %}</title>
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
-
-
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
-
     <link rel="stylesheet" href="{% static "css/base.css" % }"/>
-
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-
   </head>
   <style >
   body
@@ -30,55 +25,37 @@
   <style>
   .card {
       /* Add shadows to create the "card" effect */
-      box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+      box-shadow: 0 4px 8px 0 rgba(0,0,0,20);
       transition: 0.3s;
   }
-
   /* On mouse-over, add a deeper shadow */
   .card:hover {
-      box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+      box-shadow: 0 8px 16px 0 rgba(0,0,0,20);
   }
-
   /* Add some padding inside the card container */
   .container {
       padding: 2px 16px;
   }
   em {      font-size: 200%;     }
   </style>
-
 <body>
-
   <nav class="navbar  large navbar navbar-inverse bg-inverse" style= "width:100% ; margin: 0 auto;background-color:#000000">
-
       <div class="container">
-
             <ul class="nav navbar-nav ">
               <li>  <img src="{% static "images/sirmvit.jpg" %}" alt="Sir MVIT" style="width:50px;height:50px;"></li>
-
-          <li ><label><a class ="navbar-brand " href="{% url 'home' %}">Home</a></label></li>
-
-</ul>
+              <li ><label><a class ="navbar-brand " href="{% url 'home' %}">Home</a></label></li>
+          </ul>
 <ul class="nav navbar-nav navbar-right">
             {% if user.is_authenticated %}
-
-
               <li><a class ="navbar-link " href="{% url 'logout' %}"><span class="glyphicon glyphicon-user"></span>logout</a></li>
             {% else %}
             <li><a class ="navbar-link"href="{% url 'login' %}">Login</a></label></li>
              <li><a class ="navbar-link"href="{% url 'signup' %}">Signup</a></label></li>
             {% endif %}
           </ul>
-
 </div>
-
-
-
     </nav>
-
-
-
       <div class="container" style="height :100% ">
-
 <h1 style="color:#ffffff"><em>Categories</em></h1>
 <br>
 <br>
@@ -90,14 +67,10 @@
                       <a class="navbar-link" href="{% url "product_list" %}" > All</a>
                   </h1>
                 </span>
-              <!-- </div>
-              </div> -->
-
             </div>
           </div>
         </div>
   {% for c in categories %}
-
               <div class="col s10  m4">
                 <div class="card black darken-1">
                   <div class="card-content white-text">
@@ -107,7 +80,6 @@
                   </span>
                   </div>
                 </div>
-
               </div>
 
     {% endfor %}

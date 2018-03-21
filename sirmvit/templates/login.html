@@ -1,24 +1,13 @@
 {% extends 'base.html' %}
 {% load staticfiles %}
 {% block content %}
-<!-- <style>
-body  {
-    background-image: url("https://img.collegepravesh.com/2017/02/Sir-MVIT.jpg")no-repeat;
-    background-color: #ffffff;
-}
-</style> -->
 <style>
 body  {
     background-image: url("http://www.reuun.com/data/out/139/403696063-website-wallpapers.png");
     background-repeat:no-repeat;
-
-background-size:150%;
-
-
-
+    background-size:150%;
     background-color: #ffffff;
 }
-
 .center {
     display: block;
     margin-left: auto;
@@ -27,19 +16,12 @@ background-size:150%;
 }
 </style>
 
-
-
-        <!-- <img src="{% static "images/coverpic.jpg" %}" alt="cant'load"/> -->
   {% if form.errors %}
    <div style="background-color:black"; height= 30px>
     <p style="color: red " align="center">Your username and password didn't match. Please try again.</p>
 </div>
   {% endif %}
-
-
 <div align="center" id="slidedown">
-
-
   <form method="post">
     {% csrf_token %}
     <input type="hidden" name="next" value="{{ next }}" />
@@ -59,8 +41,6 @@ background-size:150%;
     <p>
       <p>
     <a style="color:#000000;" href="{% url 'signup' %}">New to My Site? Sign up</a>
-
   </form>
-
 </div>
 {% endblock %}
