@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <link rel="stylesheet" href="{% static "css/base.css" % }"/>
+
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  </head>
+  <style>
+
+  body
+  {
+      /* background-image: url("http://www.irbsearch.com/img/slides/bg-most-data.jpg"); */
+      /* background-image: url("http://chesterspirit.com/wp-content/uploads/2016/02/Plain-Grey-Background.jpg"); */
+      /* background-repeat:no-repeat; */
+          background-image: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR6XyhnrZLn9aOLJg7WwIOw_yF5KUdyTWb0x1k2lIindhD4zoTQCg");
+
+      background-size:120%;
+  }
+  img {
+
+      border-radius: 10%;
+  }
+  em {      font-size: 200%;     }
+  </style>
+  <script>
+  function bigImg(x) {
+      x.style.height = "250px";
+      x.style.width = "300px";
+  }
+
+  function normalImg(x) {
+      x.style.height = "200px";
+      x.style.width = "250px";
+  }
+  </script>
+
+
+  <body>
+    <nav class="navbar  large navbar navbar-inverse bg-inverse" style= "width:100% ; margin: 0 auto;background-color:#000000">
+
+        <div class="container">
+
+              <ul class="nav navbar-nav ">
+                <li>  <img src="{% static "images/sirmvit.jpg" %}" alt="Sir MVIT" style="width:50px;height:50px;"></li>
+
+            <li ><label><a class ="navbar-brand " href="{% url 'home' %}">Home</a></label></li>
+            <li ><label><a class ="navbar-brand " href="{% url 'search' %}">Search</a></label></li>
+
+
+  </ul>
+  <ul class="nav navbar-nav navbar-right">
+              {% if user.is_authenticated %}
+
+
+                <li><a class ="navbar-link " href="{% url 'logout' %}"><span class="glyphicon glyphicon-user"></span>logout</a></li>
+              {% else %}
+              <li><a class ="navbar-link"href="{% url 'login' %}">Login</a></label></li>
+               <li><a class ="navbar-link"href="{% url 'signup' %}">Signup</a></label></li>
+              {% endif %}
+            </ul>
+
+  </div>
+
+
+
+      </nav>
+
+
+
+    <div class="container">
+      <h1 style="color: white"><em>Search Students's Information</em></h1>
+
+      <form class="" action="/search/" method="post">
+        {% csrf_token %}
+        <div class="form-group">
+          <div class="col-lg-5">
+            <input type="text" name="srh" class="form-control" placeholder="Enter USN or name">
+          </div>
+          <label class ="col-lg-2"></label>
+            <button type="submit" class="btn btn-danger">Search</button>
+          </label>
+          </div>
+      </form><br><br>
+    </div>
+
+    {% if messages %}
+    <ul class ="messages">
+      {% for k in  messages %}
+      <li style= "color: red">{{ k }}</li>
+      {% endfor %}
+    </ul>
+  {% endif %}
+</div><br>
+
+
+<div style ="color: blue">
+  {% if sr %}
+  {% for k in sr %}
+  <div class="row button5">
+    <div class="col-xs-3">
+
+  <img src="{% if k.image %}{{k.image.url }}{% else %}{% static "images/no_image.png" %}{% endif %}" onmouseover="bigImg(this)" onmouseout="normalImg(this)" border="0" height="250px" width="250px"class="w3-cirle">
+</div>
+  <div class="col-xs-8">
+    <table class="table" style="color:#ffffff">
+
+
+  <h1 style="color:#ffffff">{{k.name }}</h1><br>
+  <tbody>
+       <tr>
+         <td>Address</td>
+         <td></td>
+         <td>:{{ k.address }}</td>
+       </tr>
+       <tr>
+         <td>USN</td>
+         <td></td>
+         <td>:{{ k.USN }}</td>
+       </tr>
+       <tr>
+         <td>First Semester</td>
+         <td></td>
+         <td>:{{ k.first }}</td>
+       </tr>
+       <tr>
+         <td>Second Semester</td>
+         <td></td>
+         <td>:{{ k.second }}</td>
+       </tr>
+       <tr>
+         <td>Third Semester</td>
+         <td></td>
+         <td>:{{ k.third }}</td>
+       </tr>
+       <tr>
+         <td>Fourth Semester</td>
+         <td></td>
+         <td>:{{ k.fourth }}</td>
+       </tr>
+       <tr>
+         <td>Fifth Semester</td>
+         <td></td>
+         <td>:{{ k.fifth }}</td>
+       </tr>
+
+     </tbody>
+</table>
+</div>
+</div>
+<hr style="display: block;height: 1px;border: 0;border-top: 1px solid #ccc;margin: 1em 0;padding: 0;">
+
+{% endfor %}
+{% endif %}
+
+
+  </body>
+</html>
