@@ -8,11 +8,12 @@ from django.conf.urls.static import static
 
 urlpatterns = [
     url(r'^$',core_views.front, name='front'),
-    url(r'/home', core_views.home, name='home'),
+    url(r'home', core_views.home, name='home'),
     url(r'^accounts/login/$', auth_views.login, {'template_name': 'login.html'}, name='login'),
     url(r'^logout/$', auth_views.logout, {'next_page': 'login'}, name='logout'),
     url(r'^signup/$', core_views.signup, name='signup'),
     url(r'^admin/', admin.site.urls),
+    # url(r'^percent/', core_views.percent,name='percent'),
         url(r'^search/',core_views.search ,name="search"),
         # url(r'^accounts/', admin.site.urls),
         # url(r'^blog_search_list_view/?$', 'core_views.BlogSearchListView', name='your_url_name'),

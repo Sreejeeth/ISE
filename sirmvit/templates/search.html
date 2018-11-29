@@ -58,7 +58,7 @@
         {% csrf_token %}
         <div class="form-group">
           <div class="col-lg-5">
-            <input type="text" name="srh" class="form-control" placeholder="Enter USN or name">
+            <input type="text" name="srh" class="form-control" placeholder="Enter Name or Contact number">
           </div>
           <label class ="col-lg-2"></label>
             <button type="submit" class="btn btn-danger">Search</button>
@@ -84,49 +84,56 @@
     <div class="col-xs-3">
   <img src="{% if k.image %}{{k.image.url }}{% else %}{% static "images/no_image.png" %}{% endif %}" onmouseover="bigImg(this)" onmouseout="normalImg(this)" border="0" height="250px" width="250px"class="w3-cirle">
 </div>
-  <div class="col-xs-8">
-    <table class="table" style="color:#ffffff">
-  <h1 style="color:#ffffff">{{k.name }}</h1><br>
-  <tbody>
-       <tr>
-         <td>Address</td>
-         <td></td>
-         <td>:{{ k.address }}</td>
-       </tr>
-       <tr>
-         <td>USN</td>
-         <td></td>
-         <td>:{{ k.USN }}</td>
-       </tr>
-       <tr>
-         <td>First Semester</td>
-         <td></td>
-         <td>:{{ k.first }}</td>
-       </tr>
-       <tr>
-         <td>Second Semester</td>
-         <td></td>
-         <td>:{{ k.second }}</td>
-       </tr>
-       <tr>
-         <td>Third Semester</td>
-         <td></td>
-         <td>:{{ k.third }}</td>
-       </tr>
-       <tr>
-         <td>Fourth Semester</td>
-         <td></td>
-         <td>:{{ k.fourth }}</td>
-       </tr>
-       <tr>
-         <td>Fifth Semester</td>
-         <td></td>
-         <td>:{{ k.fifth }}</td>
-       </tr>
-     </tbody>
+ <div class="col-xs-8">
+                <table class="table" style="color:#ffffff">
+                <h1 style="color:#ffffff">{{ k.name }}</h1><br>
+                <tbody>
+                     <tr>
+                       <td>Name</td>
+                       <td></td>
+                       <td>:{{ k.name }}</td>
+                     </tr>
+                     <tr>
+                       <td>Email Address</td>
+                       <td></td>
+                       <td>:{{ k.email_address }}</td>
+                     </tr>
+                     <tr>
+                       <td>Contact Number</td>
+                       <td></td>
+                       <td>:{{ k.contact_no }}</td>
+                     </tr>
+                    <tr>
+                       <td>Machine Leanring</td>
+                       <td></td>
+                       <td>:{{ k.machine_learning }}</td>
+                     </tr>
+                     <tr>
+                       <td>Web Technology</td>
+                       <td></td>
+                       <td>:{{ k.web_tech }}</td>
+                     </tr>
+                     <tr>
+                       <td>Unix</td>
+                       <td></td>
+                       <td>:{{ k.unix }}</td>
+                     </tr>
+                     <tr>
+                       <td>Software Architecture</td>
+                       <td></td>
+                       <td>:{{ k.software_architecture }}</td>
+                     </tr>
+                      <tr>
+                       <td>Information Management System</td>
+                       <td></td>
+                       <td>:{{ k.information_management_system }}</td>
+                     </tr>
+                   </tbody>
 </table>
-</div>
-</div>
+                <br>
+
+              </div>
+            
 
 <hr style="display: block;height: 1px;border: 0;border-top: 1px solid #ccc;margin: 1em 0;padding: 0;">
 {% endfor %}

@@ -48,47 +48,63 @@ function normalImg(x) {
                 <h1 style="color:#ffffff">{{ product.name }}</h1><br>
                 <tbody>
                      <tr>
-                       <td>Address</td>
+                       <td>Name</td>
                        <td></td>
-                       <td>:{{ product.address }}</td>
+                       <td>:{{ product.name }}</td>
                      </tr>
                      <tr>
-                       <td>USN</td>
+                       <td>Email Address</td>
                        <td></td>
-                       <td>:{{ product.USN }}</td>
+                       <td>:{{ product.email_address }}</td>
                      </tr>
                      <tr>
-                       <td>First Semester</td>
+                       <td>Contact Number</td>
                        <td></td>
-                       <td>:{{ product.first }}</td>
+                       <td>:{{ product.contact_no }}</td>
                      </tr>
                      <tr>
-                       <td>Second Semester</td>
+                       <td>Machine Leanring</td>
                        <td></td>
-                       <td>:{{ product.second }}</td>
+                       <td>:{{ product.machine_learning }}</td>
                      </tr>
                      <tr>
-                       <td>Third Semester</td>
+                       <td>Web Technology</td>
                        <td></td>
-                       <td>:{{ product.third }}</td>
+                       <td>:{{ product.web_tech }}</td>
                      </tr>
                      <tr>
-                       <td>Fourth Semester</td>
+                       <td>Unix</td>
                        <td></td>
-                       <td>:{{ product.fourth }}</td>
+                       <td>:{{ product.unix }}</td>
                      </tr>
                      <tr>
-                       <td>Fifth Semester</td>
+                       <td>Software Architecture</td>
                        <td></td>
-                       <td>:{{ product.fifth }}</td>
+                       <td>:{{ product.software_architecture }}</td>
+                     </tr>
+                      <tr>
+                       <td>Information Management System</td>
+                       <td></td>
+                       <td>:{{ product.information_management_system }}</td>
                      </tr>
 
                    </tbody>
 </table>
                 <br>
+
               </div>
             </div>
+            
+            
+
            <hr style="display: block;height: 1px;border: 0;border-top: 1px solid #ccc;margin: 1em 0;padding: 0;">
         {% endfor %}
+            
     </div>
+    <div class="wrapper" style="text-align: center">
+  <a href="{% url "percent" %}">
+    
+  <button class="btn waves-effect waves-light button" type="submit" name="action">Analysis
+  </button></a>
+</div>
 {% endblock %}
